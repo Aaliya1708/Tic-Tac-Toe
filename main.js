@@ -4,6 +4,7 @@ debug = false;
 arr = ["","","","","","","","",""];
 btns = document.getElementsByTagName('button');
 running = true;
+Ai = true;
 function check_score(temp_arr,temp_active){
 	if(check(temp_arr,false)!=0){
 		if(check(temp_arr,false)==-2)
@@ -184,7 +185,7 @@ function buttonpress(pos){
 			active= !active;
 			btns[pos].innerText="X";
 			if(check(arr,false)!=0)running = false;
-			AI();
+			if(Ai)AI();
 		}
 		
 	}else{
@@ -209,4 +210,10 @@ btns[5].onclick=function(){buttonpress(5);}
 btns[6].onclick=function(){buttonpress(6);}
 btns[7].onclick=function(){buttonpress(7);}
 btns[8].onclick=function(){buttonpress(8);}
+ai = document.getElementById('ai');
+ai.onclick = function(){
+	if(Ai){	this.innerText="VS Human";}
+	else {this.innerText = "VS AI";}
+	Ai = !Ai;
+	}
 setInterval(function(){check(arr,true);},100);
